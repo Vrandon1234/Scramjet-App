@@ -47,11 +47,19 @@ form.addEventListener("submit", async (event) => {
 
 	const url = search(address.value, searchEngine.value);
 
-	let wispUrl =
-		(location.protocol === "https:" ? "wss" : "ws") +
-		"://" +
-		location.host +
-		"/wisp/";
+	// Scramjet tunnels all traffic through a persistent WebSocket "Wisp" server.
+	// Vercel's serverless platform can't host that long-lived connection, so when
+	// we're not on localhost we fall back to a public hosted Wisp server.
+	// Override by setting window.WISP_URL (see config.js).
+	const isLocal = ["localhost", "127.0.0.1"].includes(location.hostname);
+	const wispUrl =
+		window.WISP_URL ||
+		(isLocal
+			? (location.protocol === "https:" ? "wss" : "ws") +
+				"://" +
+				location.host +
+				"/wisp/"
+			: "wss://wisp.mercurywork.shop/");
 	if ((await connection.getTransport()) !== "/libcurl/index.mjs") {
 		await connection.setTransport("/libcurl/index.mjs", [
 			{ websocket: wispUrl },
