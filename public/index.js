@@ -62,3 +62,11 @@ form.addEventListener("submit", async (event) => {
 	document.body.appendChild(frame.frame);
 	frame.go(url);
 });
+
+// Quick-launch site chips: fill the address bar and submit the form.
+for (const chip of document.querySelectorAll(".site-chip")) {
+	chip.addEventListener("click", () => {
+		address.value = chip.dataset.url || chip.textContent.trim();
+		form.requestSubmit();
+	});
+}

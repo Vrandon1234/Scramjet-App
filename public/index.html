@@ -1,18 +1,25 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
 		/>
-		<title>Scramjet</title>
+		<title>Scramjet &middot; Browse the web freely</title>
+		<meta
+			name="description"
+			content="Scramjet is an experimental interception based web proxy designed to evade internet censorship and bypass arbitrary browser restrictions."
+		/>
+		<meta name="theme-color" content="#0c0c0e" />
 
-		<link rel="shortcut icon" content="favicon.webp" />
-	
+		<link rel="shortcut icon" href="favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 		<script src="/scram/scramjet.all.js"></script>
 		<script src="/baremux/index.js"></script>
-		
+
 		<link rel="stylesheet" href="index.css" />
 		<script src="register-sw.js" defer></script>
 		<script src="search.js" defer></script>
@@ -20,47 +27,187 @@
 	</head>
 
 	<body>
-		<div title="Scramjet Logo" class="flex-center logo-wrapper header-center">
-			<img class="logo" src="sj.png" alt="Scramjet" />
-			<h1>Scramjet | MW</h1>
-		</div>
-		<div class="flex-center desc left-margin">
-			<p>
-				Scramjet is an experimental interception based web proxy designed to
-				evade internet censorship, bypass arbitrary web browser restrictions and
-				innovate web proxy technologies.
-			</p>
-		</div>
+		<header class="site-header">
+			<a class="brand" href="/" title="Scramjet home">
+				<img class="brand-logo" src="sj.png" alt="Scramjet logo" />
+				<span class="brand-name">Scramjet</span>
+			</a>
+			<nav class="site-nav" aria-label="Primary">
+				<a href="#features">Features</a>
+				<a href="#sites">Sites</a>
+				<a
+					href="https://github.com/MercuryWorkshop/scramjet"
+					target="_blank"
+					rel="noreferrer noopener"
+					>GitHub</a
+				>
+				<a class="nav-cta" href="#launch">Launch</a>
+			</nav>
+		</header>
 
-		<form id="sj-form" class="flex-center">
-			<input
-				id="sj-search-engine"
-				value="https://www.google.com/search?q=%s"
-				type="hidden"
-			/>
-			<input id="sj-address" type="text" placeholder="Search the web freely" />
-		</form>
-		<div class="desc left-margin">
-			<p id="sj-error"></p>
-			<pre id="sj-error-code"></pre>
-		</div>
-		<footer>
-			<div>
+		<main>
+			<section class="hero" id="launch">
+				<span class="eyebrow">The most advanced web proxy</span>
+				<h1 class="hero-title text-balance">
+					Browse the entire web,
+					<span class="accent">without limits.</span>
+				</h1>
+				<p class="hero-sub text-pretty">
+					Scramjet is an experimental interception based web proxy built to
+					evade internet censorship, bypass arbitrary browser restrictions, and
+					push web proxy technology forward.
+				</p>
+
+				<form id="sj-form" class="search-shell" role="search">
+					<input
+						id="sj-search-engine"
+						value="https://www.google.com/search?q=%s"
+						type="hidden"
+					/>
+					<svg
+						class="search-icon"
+						width="20"
+						height="20"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+					>
+						<circle cx="11" cy="11" r="8"></circle>
+						<path d="m21 21-4.3-4.3"></path>
+					</svg>
+					<input
+						id="sj-address"
+						type="text"
+						autocomplete="off"
+						autocapitalize="off"
+						spellcheck="false"
+						placeholder="Search the web or enter a URL"
+						aria-label="Search the web or enter a URL"
+					/>
+					<button type="submit" class="search-go">Go</button>
+				</form>
+
+				<div class="status-area">
+					<p id="sj-error" role="alert"></p>
+					<pre id="sj-error-code"></pre>
+				</div>
+
+				<section class="quick-sites" id="sites" aria-label="Popular sites">
+					<button class="site-chip" data-url="https://www.google.com">
+						Google
+					</button>
+					<button class="site-chip" data-url="https://www.youtube.com">
+						YouTube
+					</button>
+					<button class="site-chip" data-url="https://www.reddit.com">
+						Reddit
+					</button>
+					<button class="site-chip" data-url="https://discord.com/app">
+						Discord
+					</button>
+					<button class="site-chip" data-url="https://x.com">X</button>
+					<button class="site-chip" data-url="https://www.spotify.com">
+						Spotify
+					</button>
+				</section>
+			</section>
+
+			<section class="features" id="features">
+				<article class="feature-card">
+					<div class="feature-icon" aria-hidden="true">
+						<svg
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path
+								d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+							></path>
+						</svg>
+					</div>
+					<h3>Private by design</h3>
+					<p>
+						Requests are intercepted and encrypted in transit, keeping your
+						browsing shielded from prying eyes on the network.
+					</p>
+				</article>
+				<article class="feature-card">
+					<div class="feature-icon" aria-hidden="true">
+						<svg
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+						</svg>
+					</div>
+					<h3>Built for speed</h3>
+					<p>
+						A high-performance interception engine renders complex, modern sites
+						smoothly, including video and dynamic web apps.
+					</p>
+				</article>
+				<article class="feature-card">
+					<div class="feature-icon" aria-hidden="true">
+						<svg
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10"></circle>
+							<path d="M2 12h20"></path>
+							<path
+								d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+							></path>
+						</svg>
+					</div>
+					<h3>Open the whole web</h3>
+					<p>
+						Reach Google, YouTube, social platforms and more, even with CAPTCHA
+						support on supported sites.
+					</p>
+				</article>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="footer-links">
 				<a
 					title="The Mercury Workshop GitHub organization"
 					href="https://github.com/MercuryWorkshop"
+					target="_blank"
+					rel="noreferrer noopener"
 					>Mercury Workshop</a
 				>
 				<a
 					title="The example demo app for Scramjet"
 					href="https://github.com/MercuryWorkshop/Scramjet-Demo"
+					target="_blank"
+					rel="noreferrer noopener"
 					>GitHub</a
 				>
 				<a title="License information" href="credits.html">Credits</a>
 			</div>
-			<div>
-				<span>Scramjet &copy; MW 2025</span>
-			</div>
+			<span class="footer-copy">Scramjet &copy; MW 2025</span>
 		</footer>
 	</body>
 </html>
