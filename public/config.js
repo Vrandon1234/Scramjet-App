@@ -1,7 +1,8 @@
 let _CONFIG = {};
 
-// Optional override for the Wisp transport server.
-// Leave null to auto-select: a local "/wisp/" server during development, or a
-// public hosted Wisp server when deployed to a host that can't run WebSockets
-// (e.g. Vercel). Set to a "wss://your-wisp-server/" URL to use your own.
-window.WISP_URL = null;
+// Override for the Wisp transport server (your wispbyte server).
+// NOTE: browsers block insecure ws:// connections from an https:// page
+// (mixed content). Your wispbyte server is plain http/ws, so this only works
+// when the site itself is also served over http (e.g. http://localhost or an
+// http deployment). On an https Vercel URL this will be blocked by the browser.
+window.WISP_URL = "ws://93.115.101.157:13889/";
